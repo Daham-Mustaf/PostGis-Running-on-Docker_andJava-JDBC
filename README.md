@@ -30,3 +30,5 @@ CREATE EXTENSION postgis;
 CREATE EXTENSION postgis_topology;
 ```
 We can find the version installed by issuing a `select PostGIS_full_version();` query with psql or another tool.
+<br /> 
+####Importing nonspatial tabular data (CSV) using GDA<br /> 
