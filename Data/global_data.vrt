@@ -1,9 +1,0 @@
- <OGRVRTDataSource>
-            <OGRVRTLayer name="Global_24h">
-            <SrcDataSource> global_data.csv</SrcDataSource>
-            <GeometryType>wkbPoint</GeometryType>
-            <LayerSRS>EPSG:4326</LayerSRS>
-              <GeometryField encoding="PointFromColumns"
-               x="longitude" y="latitude"/>
-            </OGRVRTLayer>
-          </OGRVRTDataSource>
