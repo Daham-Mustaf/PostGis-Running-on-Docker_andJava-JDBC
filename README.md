@@ -37,10 +37,10 @@ the process, such as spatial or attribute selection, reducing the set of attribu
 even reprojecting the features during translation.<br />
 This file represents the active hotspots in the world detected by the Moderate Resolution Imaging Spectroradiometer (MODIS) satellites in the last 24 hours. For each row, there are the coordinates of the hotspot (latitude, longitude) in decimal degrees (in the WGS 84 spatial reference system, SRID = 4326), and a series of useful fields such as the acquisition date, acquisition time, and satellite type, just to name a few.
 
-1. Analyze the structure of the Global_24h.csv file<br />
+1. Analyze the structure of the [`global_data.csv`](https://github.com/Daham-Mustaf/PostGis/blob/main/Data/global_data.csv)<br />
  ```bash
  $ cd ~/Desktop/PostGis/Data
  $ head -n 5 Global_24h.csv
  ```
- 2. Create a GDAL virtual data source in the same directory where the CSV file is composed of just one layer derived from the Global_24h.csv file. edit the file global_24h.vrt.
+ 2. Create a GDAL virtual data source in the same directory where the [`global_data.csv`](https://github.com/Daham-Mustaf/PostGis/blob/main/Data/global_data.csv). edit the file [`global_data.vrt`](https://github.com/Daham-Mustaf/PostGis/blob/main/Data/global_data.vrt).<br />
 
