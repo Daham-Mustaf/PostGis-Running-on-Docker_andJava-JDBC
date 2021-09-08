@@ -43,4 +43,6 @@ This file represents the active hotspots in the world detected by the Moderate R
  $ head -n 5 Global_24h.csv
  ```
  2. Create a GDAL virtual data source in the same directory where the [`global_data.csv`](https://github.com/Daham-Mustaf/PostGis/blob/main/Data/global_data.csv). edit the file [`global_data.vrt`](https://github.com/Daham-Mustaf/PostGis/blob/main/Data/global_data.vrt).<br />
+ 3. With the `ogrinfo` command, The `ogrinfo` program lists various information about an OGR-supported data source to stdout (the terminal). By
+executing SQL statements it is also possible to edit data.
 
