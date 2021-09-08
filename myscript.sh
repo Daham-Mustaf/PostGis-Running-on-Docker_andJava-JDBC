@@ -7,3 +7,7 @@ CREATE EXTENSION postgis
 CREATE EXTENSION postgis_topology
 
 postgres=# \q
+
+£££££££ 
+cd ~/Desktop/PostGis/Data
+head -n 5 firenews.csv 
