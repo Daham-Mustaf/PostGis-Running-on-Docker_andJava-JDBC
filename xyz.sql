@@ -27,5 +27,6 @@
    DROP VIEW IF EXISTS viewXyz;
    -- Retain original attributes, but also create a point and y
    CREATE VIEW viewXyz AS
-   SELECT x, y, z, ST_MakePoint(x,y)
+   -- // add SRID for the point
+   SELECT x, y, z, ST_SetSRID(ST_MakePoint(x,y), 4326)
    FROM xyz;
