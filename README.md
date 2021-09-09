@@ -87,3 +87,4 @@ You can use SQL to create a view and include the spatial column in the view defi
    SELECT x, y, z, ST_MakePoint(x,y)
    FROM xyz;
 ```
+The `ST_MakePoint` function takes the input of two numbers to create a PostGIS point Any time there is an update to the table to add a new record with x and y values, the view will populate a point, which is really useful for data that is constantly being updated.
