@@ -50,3 +50,5 @@ $ ogrinfo global_24h.vrt Global_24h -fid 1
  ```
 `-fid` If provided, only the feature with this feature id will be reported. Operates exclusive of the spatial or attribute
 queries
+
+### Creating a spatial view in PostgreSQL:
