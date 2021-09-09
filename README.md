@@ -89,3 +89,12 @@ You can use SQL to create a view and include the spatial column in the view defi
 ```
 The `ST_MakePoint()` function takes the input of two numbers to create a PostGIS point Any time there is an update to the table to add a new record with x and y values, the view will populate a point, which is really useful for data that is constantly being updated.
 with `ST_SetSRID()` We can declare our spatial reference system in the view, The spatial reference system identifier (SRID) allows us to specify the coordinate system for a given dataset.
+```js
+SELECT AddGeometryColumn ('xyz','geom',3734,'POINT',2);
+UPDATE xyz
+ // Add ST_SetSRID
+     SET geom = ST_SetSRID(ST_MakePoint(x,y), 3734);
+SELECT *, ST_AsText(geom) as points FROM xyz;
+```
+with fucntion `AddGeometryColumn()` We now have a column called geom with an SRID of 3734; that is, a point geometry type in two dimensions.
+`ST_AsText(geom)`Returns the Well-Known Text representation of the geometry/geography.
