@@ -50,3 +50,42 @@ $ ogrinfo global_24h.vrt Global_24h -fid 1
  ```
 `-fid` If provided, only the feature with this feature id will be reported. Operates exclusive of the spatial or attribute
 queries
+
+### Creating a spatial view in PostgreSQL:
+You can use SQL to create a view and include the spatial column in the view definition.
+1- we will creat some random points, which could be real data.
+```js
+ //Drop the table in case it exists
+   DROP TABLE IF EXISTS xyz CASCADE;
+   CREATE TABLE xyz
+   //This table contains numeric x, y, and z values
+   (
+     x numeric,
+     y numeric,
+     z numeric
+   )
+   WITH (OIDS=FALSE);
+   // We will be disciplined and ensure we have a primary key
+   ALTER TABLE xyz ADD COLUMN gid serial;
+   ALTER TABLE xyz ADD PRIMARY KEY (gid);
+
+   // populate the data for testing to use in the query:
+
+   INSERT INTO xyz (x, y, z)
+     VALUES (random()*3, random()*10, random()*100);
+   INSERT INTO xyz (x, y, z)
+     VALUES (random()*3, random()*10, random()*100);
+   INSERT INTO xyz (x, y, z)
+     VALUES (random()*3, random()*10, random()*100);
+   INSERT INTO xyz (x, y, z)
+     VALUES (random()*3, random()*10, random()*100);
+
+     // Ensure we don't try to duplicate the view
+   DROP VIEW IF EXISTS viewXyz;
+   // Retain original attributes, but also create a point and y
+   CREATE VIEW viewXyz AS
+   SELECT x, y, z, ST_SetSRID(ST_MakePoint(x,y), 4326)
+   FROM xyz;
+```
+The `ST_MakePoint()` function takes the input of two numbers to create a PostGIS point Any time there is an update to the table to add a new record with x and y values, the view will populate a point, which is really useful for data that is constantly being updated.
+with `ST_SetSRID()` We can declare our spatial reference system in the view, The spatial reference system identifier (SRID) allows us to specify the coordinate system for a given dataset.
