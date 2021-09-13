@@ -1,6 +1,23 @@
 # PostGis
+
+# Table of contents
+1. [PostGIS Introduction](#introduction)
+- [Installation:](#install)
+- [ Check which version](#version)
+- [extensions:](#extensions)
+- [`ogrinfo`: ](#datasource)
+- [`--help` getting help: ](#help)
+- [`--long-usage` full help:](#fullhelp)
+3. [Working with shape file](#paragraph1)
+
+
+## PostGIS Introduction <a name="introduction"></a>
+
+
 PostGIS Setup<br /> 
 Setting up PostGIS functions will allow to access spatial functions from within PostgreSQL.<br /> 
+
+## PostGIS Instollation: <a name="install"></a>
 Installing under Ubuntu from terminal.
 ```bash
 $ sudo add-apt-repository ppa:ubuntugis/ppa
@@ -10,6 +27,18 @@ Install PostGIS with apt-get.
 ```bash
 $ sudo apt-get install postgis postgresql-10-postgis-2.5
 ```
+## check the version: <a name="version"></a>
+After a PostGIS install, do a quick verification of the version to make sure the installa- tion succeeded. Execute the following query:
+```sql
+SELECT postgis_full_version();
+```
+## add extenstions:<a name="extensions"></a>
+Once PostGIS is installed, you will need to configure your database to use the extensions.
+```j
+CREATE EXTENSION postgis;
+CREATE EXTENSION postgis_topology;
+```
+
 After successful installation open psql.
 ```bash
 $ sudo -u postgres psql
@@ -24,11 +53,7 @@ Connect to specific database
 ```bash
 postgres=# \c DATABASE_NAME
 ```
-Once PostGIS is installed, you will need to configure your database to use the extensions.
-```bash
-CREATE EXTENSION postgis;
-CREATE EXTENSION postgis_topology;
-```
+
 We can find the version installed by issuing a `select PostGIS_full_version();` query with psql or another tool.<br /> 
 ### Importing nonspatial tabular data (CSV) using GDA:<br /> 
 Data Abstraction Library [`GDAL`](https://gdal.org/gdal.pdf) The Geospatial Data Abstraction Library (GDAL) is a collection of tools that allow you to read, manipulate and write both raster and vector data using GDAL and the Simple Feature Library (OGR). we will import a CSV file to PostGIS using the `ogr2ogr` GDAL command and the GDAL OGR virtual format. <br /> 
