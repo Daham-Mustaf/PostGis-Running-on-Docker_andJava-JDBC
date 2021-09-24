@@ -22,7 +22,30 @@ Setting up PostGIS functions will allow to access spatial functions from within 
 Docker is a set of platform as a service (PaaS) products that use OS-level virtualization to deliver software in packages called containers. Containers are isolated from one another and bundle their own software, libraries and configuration files; they can communicate with each other through well-defined channels. Because all of the containers share the services of a single operating system kernel, they use fewer resources than virtual machines.
 
 Docker and PostgreSQL:<a name="dp"></a>
-
+- run the commadn to donwload the image:
+```bash
+docker pull postgres
+```
+- start a postgres instance:
+```bash
+docker run --name postgres-0 -e POSTGRES_PASSWORD=postgres -d  -p 5432:5432 postgres:alpine
+```
+- check the docker which it is ruunnig 
+```bash
+Docker ps
+```
+- Open a shell into a running docker container:
+```bash
+docker exec -it postgres-0 bash
+```
+- Let’s stop the container / instance
+```bash
+docker stop postgres-0
+```
+- And let’s also throw away any data generated and stored by our instance
+ ```bash
+docker rm postgres-0
+```
 
 ## PostGIS Instollation: <a name="install"></a>
 Installing under Ubuntu from terminal.
