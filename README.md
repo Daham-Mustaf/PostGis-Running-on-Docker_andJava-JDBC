@@ -2,6 +2,8 @@
 
 # Table of contents
 1. [PostGIS Introduction](#introduction)
+- [Docker:](#dock)
+- [Docker and PostgreSQL:](#dp)
 - [Installation:](#install)
 - [ Check which version](#version)
 - [extensions:](#extensions)
@@ -16,6 +18,11 @@
 
 PostGIS Setup<br /> 
 Setting up PostGIS functions will allow to access spatial functions from within PostgreSQL.<br /> 
+## Docker Introduction <a name="dock"></a>
+Docker is a set of platform as a service (PaaS) products that use OS-level virtualization to deliver software in packages called containers. Containers are isolated from one another and bundle their own software, libraries and configuration files; they can communicate with each other through well-defined channels. Because all of the containers share the services of a single operating system kernel, they use fewer resources than virtual machines.
+
+Docker and PostgreSQL:<a name="dp"></a>
+
 
 ## PostGIS Instollation: <a name="install"></a>
 Installing under Ubuntu from terminal.
@@ -71,6 +78,8 @@ This file represents the active hotspots in the world detected by the Moderate R
  3. With the `ogrinfo` command, The `ogrinfo` program lists various information about an OGR-supported data source to stdout (the terminal). By
 executing SQL statements it is also possible to edit data.
 With the `ogrinfo` command, check if the virtual layer is correctly recognized by GDAL.
+
+`ogrinfo` <a name="datasource"></a>
 ```bash
 $ ogrinfo global_24h.vrt Global_24h -fid 1
  ```
