@@ -38,14 +38,16 @@ Docker ps
 ```bash
 docker exec -it postgres-0 bash
 ```
-- Let’s stop the container / instance
+- Stop the container/instance
 ```bash
 docker stop postgres-0
 ```
-- And let’s also throw away any data generated and stored by our instance
+- Throw away any data generated and stored by our instance
  ```bash
 docker rm postgres-0
 ```
+some other sufull commandes cann be found in this link [`Docker`](https://docs.docker.com/reference/)<br />
+
 
 ## PostGIS Instollation: <a name="install"></a>
 Installing under Ubuntu from terminal.
