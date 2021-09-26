@@ -19,7 +19,7 @@
 PostGIS Setup<br /> 
 Setting up PostGIS functions will allow to access spatial functions from within PostgreSQL.<br /> 
 ## Docker Introduction <a name="dock"></a>
-Docker is a set of platform as a service (PaaS) products that use OS-level virtualization to deliver software in packages called containers. Containers are isolated from one another and bundle their own software, libraries and configuration files; they can communicate with each other through well-defined channels. Because all of the containers share the services of a single operating system kernel, they use fewer resources than virtual machines.
+Docker is a set of platform as a service (PaaS) products that use OS-level virtualization to deliver software in packages called containers. Containers are isolated from one another and bundle their own software, libraries and configuration files; they can communicate with each other through well-defined channels. Because all of the containers share the services of a single operating system kernel, they use fewer resources than virtual machines. [`Docker`](https://en.wikipedia.org/wiki/Docker_(software))<br />
 
 Docker and PostgreSQL:<a name="dp"></a>
 - run the commadn to donwload the image:
