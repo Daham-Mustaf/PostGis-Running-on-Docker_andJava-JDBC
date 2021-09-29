@@ -194,7 +194,7 @@ public void creatLineStringTable() {
 
 	}
  ```
- more generic method which takse an postgres command query:
+ more generic method which takes a postgres command query:
  
   ```java
  public void creatPostgresQuery(String qury) {
