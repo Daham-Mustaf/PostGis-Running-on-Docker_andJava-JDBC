@@ -11,6 +11,7 @@
 - [`--help` getting help: ](#help)
 - [`--long-usage` full help:](#fullhelp)
 3. [Working with shape file](#paragraph1)
+- [Java Retrieve data](#Java)
 
 
 ## PostGIS Introduction <a name="introduction"></a>
@@ -157,3 +158,92 @@ SELECT *, ST_AsText(geom) as points FROM xyz;
 ```
 with fucntion `AddGeometryColumn()` We now have a column called geom with an SRID of 3734; that is, a point geometry type in two dimensions.
 `ST_AsText(geom)`Returns the Well-Known Text representation of the geometry/geography.
+
+## Java <a name="Java"></a>
+
+creat a method for creating a table in data base:
+```java
+public void creatLineStringTable() {
+		Connection c = null;
+		Statement stmt = null;
+		String CreateSql = null;
+
+		try {
+
+			Class.forName("org.postgresql.Driver");
+
+			c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postGis", "postgres", "postgres");
+			System.out.println("Database Connected ..");
+
+			stmt = c.createStatement();
+			CreateSql = "CREATE TABLE linestrings ( id serial PRIMARY KEY, name varchar(20), linestrings geometry(LINESTRING));";
+			stmt.executeUpdate(CreateSql);
+			stmt.close();
+			c.close();
+		}
+
+		catch (Exception e)
+
+		{
+			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+			System.exit(0);
+
+		}
+
+		System.out.println("Table Created successfully");
+
+	}
+ ```
+ more generic method which takse an postgres command query:
+ 
+  ```java
+ public void creatPostgresQuery(String qury) {
+		Connection c = null;
+		Statement stmt = null;
+		String CreateSql = null;
+
+		try {
+
+			Class.forName("org.postgresql.Driver");
+
+			c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postGis", "postgres", "postgres");
+			System.out.println("Database Connected ..");
+
+			stmt = c.createStatement();
+			CreateSql = qury;
+			stmt.executeUpdate(CreateSql);
+			stmt.close();
+			c.close();
+		}
+
+		catch (Exception e)
+
+		{
+			System.err.println(e.getClass().getName() + ": " + e.getMessage());
+			System.exit(0);
+
+		}
+
+		System.out.println("Query excuted successfully");
+
+	}
+  ```
+  test methods in main method:
+   ```java
+   public static void main(String[] args) {
+
+		LineStrings lineStrings = new LineStrings();
+//		lineStrings.creatLineStringTable();
+//		String query = "INSERT INTO linestrings (name, linestrings) VALUES ('Open', ST_GeomFromText('LINESTRING(0 0, 1 1, 1 -1)')),('Closed', ST_GeomFromText('LINESTRING(0 0, 1 1, 1 -1, 0 0)'));";
+//		lineStrings.creatPostgresQuery(query);
+//		String seleString = "select * FROM linestrings;";
+//a		lineStrings.creatPostgresQuery(seleString);
+		String geGeom = "select ST_AsText(linestrings.linestrings) as geom,id from linestrings;";
+		lineStrings.getGeom(geGeom);
+
+	}
+
+}
+    ```
+ 
+ 
